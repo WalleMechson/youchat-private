@@ -14,14 +14,13 @@ const AuthForm = () => {
   const [variant, setVariant] = useState<VARIANT>("LOGIN");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const toggleVariant = () =>
-    useCallback(() => {
-      if (variant === "LOGIN") {
-        setVariant("REGISTER");
-      } else {
-        setVariant("LOGIN");
-      }
-    }, []);
+  const toggleVariant = useCallback(() => {
+    if (variant === "LOGIN") {
+      setVariant("REGISTER");
+    } else {
+      setVariant("LOGIN");
+    }
+  }, [variant]);
 
   const {
     register,
@@ -109,6 +108,26 @@ const AuthForm = () => {
             onClick={() => onSocialAction("google")}
           />
         </Seperator>
+        <div
+          className="
+            flex
+            gap-2
+            justify-center
+            text-sm
+            mt-6
+            px-2
+            text-gray-500
+        "
+        >
+          <div>
+            {variant === "LOGIN"
+              ? "New to YouChat?"
+              : "Already have an account?"}
+          </div>
+          <div onClick={toggleVariant} className="underline cursor-pointer">
+            {variant === "LOGIN" ? "Create an account" : "Login here"}
+          </div>
+        </div>
       </div>
     </div>
   );
