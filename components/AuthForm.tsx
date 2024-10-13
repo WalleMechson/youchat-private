@@ -4,6 +4,9 @@ import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "./Input";
 import Button from "./Button";
+import Seperator from "./Seperator";
+import AuthSocialButton from "./AuthSocialButton";
+import { BsGithub, BsGoogle } from "react-icons/bs";
 
 type VARIANT = "LOGIN" | "REGISTER";
 
@@ -96,6 +99,16 @@ const AuthForm = () => {
             </Button>
           </div>
         </form>
+        <Seperator title="Or continue with">
+          <AuthSocialButton
+            icon={BsGithub}
+            onClick={() => onSocialAction("github")}
+          />
+          <AuthSocialButton
+            icon={BsGoogle}
+            onClick={() => onSocialAction("google")}
+          />
+        </Seperator>
       </div>
     </div>
   );
