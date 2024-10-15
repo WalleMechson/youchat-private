@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "./Input";
@@ -7,6 +8,7 @@ import Button from "./Button";
 import Seperator from "./Seperator";
 import AuthSocialButton from "./AuthSocialButton";
 import { BsGithub, BsGoogle } from "react-icons/bs";
+import toast from "react-hot-toast";
 
 type VARIANT = "LOGIN" | "REGISTER";
 
@@ -36,8 +38,12 @@ const AuthForm = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-
-    setIsLoading(false);
+    if (variant === "REGISTER") {
+      axios
+        .post("/api/register", data)
+        .catch(() => toast.error("Something went wrong :("))
+        .finally(() => setIsLoading(false));
+    }
   };
 
   const onSocialAction = (action: string) => {
