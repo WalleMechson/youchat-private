@@ -1,3 +1,5 @@
+"use client";
+
 interface SeperatorProps {
   children: React.ReactNode;
   title?: string;
