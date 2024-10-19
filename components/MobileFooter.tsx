@@ -16,8 +16,8 @@ const MobileFooter = () => {
         flex
         items-center
         bg-white
-      border-t-[1px]
-       lg:hidden  
+        border-t-[1px]
+        lg:hidden
     "
     >
         {routes.map((route) => (
